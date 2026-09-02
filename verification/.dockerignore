@@ -1,0 +1,10 @@
+.git
+.gitignore
+.gitkeep
+__pycache__/
+*.py[cod]
+.pytest_cache/
+tests/
+README.md
+MODEL_MANIFEST.sha256
+
