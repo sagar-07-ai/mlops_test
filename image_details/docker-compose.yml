@@ -1,0 +1,19 @@
+services:
+  imagedetails-service:
+    image: imagedetails:1.0
+    container_name: imagedetails-container
+    ports:
+      - "8008:8000"
+    restart: unless-stopped
+# services:
+#   myapp:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+
+#     container_name: myapp-container
+
+#     ports:
+#       - "8000:8000"
+
+#     restart: unless-stopped
