@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKERHUB_USERNAME = 'sagar07ai'
-        IMAGE_NAME = 'verification-service'
+        IMAGE_NAME = 'image-details'
     }
 
     stages {
@@ -43,7 +43,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                dir('verification') {
+                dir('image_details') {
                     sh '''
                         docker build \
                           -t ${DOCKERHUB_USERNAME}/${IMAGE_NAME}:${BUILD_NUMBER} \
