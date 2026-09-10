@@ -99,3 +99,10 @@ def test_oversized_upload_is_rejected() -> None:
 
     assert response.status_code == 413
     assert response.json() == {"detail": "Uploaded file exceeds 10 MiB."}
+
+
+def test_missing_upload_is_rejected() -> None:
+    response = client.post("/api/v1/images/details")
+
+    assert response.status_code == 422
+    assert response.json()["detail"][0]["loc"] == ["body", "file"]

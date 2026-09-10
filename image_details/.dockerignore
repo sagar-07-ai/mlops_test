@@ -6,6 +6,4 @@
 __pycache__/
 *.py[cod]
 docs/
-pytest.ini
-requirements-dev.txt
-tests/
+test-results/
