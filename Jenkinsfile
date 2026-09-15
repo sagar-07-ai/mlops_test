@@ -78,6 +78,28 @@ pipeline {
                 }
             }
         }
+        stage('SonarQube Analysis') {
+            steps {
+                dir('image_details') {
+                    script {
+                        def scannerHome = tool 'SonarScanner'
+
+                        withSonarQubeEnv('local-sonarqube') {
+                            sh """
+                                ${scannerHome}/bin/sonar-scanner
+                            """
+                        }
+                    }
+                }
+            }
+        }
+        stage('SonarQube Quality Gate') {
+            steps {
+                    timeout(time: 10, unit: 'MINUTES') {
+                        waitForQualityGate abortPipeline: true
+                    }
+                }
+            }
 
         stage('Build Docker Image') {
             steps {
