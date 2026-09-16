@@ -50,7 +50,9 @@ pipeline {
                     sh '''
                         set -eu
                         mkdir -p test-results
-                        rm -f test-results/pytest.xml
+                        rm -f \
+                          test-results/pytest.xml \
+                          test-results/coverage.xml
 
                         docker build --pull \
                           --file Dockerfile.test \
@@ -68,6 +70,9 @@ pipeline {
                         docker cp \
                           "$test_container:/workspace/test-results/pytest.xml" \
                           test-results/pytest.xml || report_status=$?
+                        docker cp \
+                          "$test_container:/workspace/test-results/coverage.xml" \
+                          test-results/coverage.xml || report_status=$?
                         docker rm "$test_container"
 
                         if [ "$test_status" -ne 0 ]; then
