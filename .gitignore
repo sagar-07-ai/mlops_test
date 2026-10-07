@@ -6,3 +6,11 @@ test-results/
 .venv/
 venv/
 docs/
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+*.tfvars
+!*.tfvars.example
